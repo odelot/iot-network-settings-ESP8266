@@ -22,7 +22,7 @@ I suggest a simplified way to make this setting through the smartphone. It's sim
 
 3. focus on programming the main purpose of your device 
 
-\ * You can crete our own Android app to config the device using the source code (https://github.com/profFabio/iot-network-settings-cordova) of the ones in the play store  
+\* You can crete our own Android app to config the device using the source code (https://github.com/profFabio/iot-network-settings-cordova) of the ones in the play store  
 
 ## Installation
 
