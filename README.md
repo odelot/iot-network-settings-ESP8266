@@ -3,7 +3,7 @@
 Library built for ESP8266 (with the Arduino SDK - https://github.com/esp8266/Arduino) that provides a convenient way to set up your IoT device based on ESP8266 with credentials to connect to the wireless router and access Internet.
 
 You can create your own way to send the credential to this library (see customization item below), but there is an android app ready to do this job for you (click on image):
-<A href = 'https: //play.google.com/store/apps/details id = br.com.nubix.cordova.wifisettings & utm_source = global_co & utm_medium = prtnr & utm_content = Mar2515 & utm_campaign = PartBadge & pcampaignid = MKT-Other-global-all-co -prtnr-py-PartBadge-Mar2515-1 '> <img alt =' Available on Google Play 'src =' https: //play.google.com/intl/en_us/badges/images/generic/pt-br_badge_web_generic.png "width =" 200px "/> </a>
+<a href='https://play.google.com/store/apps/details?id=br.com.nubix.cordova.wifisettings&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="200px"/></a>
 
 ## ChangeLog
 
@@ -18,7 +18,7 @@ I suggest a simplified way to make this setting through the smartphone. It's sim
 1. download the ESP8266 library
 
 2. download the Android app *
-<A href = 'https: //play.google.com/store/apps/details id = br.com.nubix.cordova.wifisettings & utm_source = global_co & utm_medium = prtnr & utm_content = Mar2515 & utm_campaign = PartBadge & pcampaignid = MKT-Other-global-all-co -prtnr-py-PartBadge-Mar2515-1 '> <img alt =' Available on Google Play 'src =' https: //play.google.com/intl/en_us/badges/images/generic/pt-br_badge_web_generic.png "width =" 200px "/> </a>
+<a href='https://play.google.com/store/apps/details?id=br.com.nubix.cordova.wifisettings&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="200px"/></a>
 
 3. focus on programming the main purpose of your device 
 
@@ -63,7 +63,7 @@ The library uses 97 bytes in the EEPROM memory. You can set an offset to write f
 
 See example "simplest-sample":
 
-`` `
+```
 #include <Flash.h>
 #include <Log.h>
 #include <Nubix.h>
@@ -83,7 +83,7 @@ void loop () {
     Serial.println ( "do your stuff");
   }
 }
-`` `
+```
 
 Use the Android application to send the WiFi network settings that the device should connect.
 
