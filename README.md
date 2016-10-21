@@ -50,12 +50,12 @@ You may observe that after the esp8266 connects successfully to a router, it rec
 
 The library uses 97 bytes in the EEPROM memory. You can set an offset to write from a position that is not in use by your application. By default, the starting address is 0.
 
-| (offset) + Position  | Description |
-| --------------------------- | --------------------- ------------------------------------------------- |
-| 0 | state (state machine) |
-| 1 | sort of wifi connection security (not used yet) |
-| 2-33 | SSID (received via wifi - at max 32 positions.) |
-| 34-96 | password wifi (received via wifi - at max 63 positions) |
+| (offset) + Position  | Description                                             |
+|----------------------|-------------------------------------------------------- |
+| 0                    | state (state machine)                                   |
+| 1                    | sort of wifi connection security (not used yet)         |
+| 2-33                 | SSID (received via wifi - at max 32 positions.)         |
+| 34-96                | password wifi (received via wifi - at max 63 positions) |
 
 ## Use
 
