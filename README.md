@@ -38,7 +38,7 @@ I suggest a simplified way to make this setting through the smartphone. It's sim
 
 See the image to understand how the library works.
 
-! [States] (https://github.com/odelot/iot-network-settings-ESP8266/blob/master/img/states.png)
+![states](https://github.com/odelot/iot-network-settings-ESP8266/blob/master/img/states.png)
 
  * Reset the library (reset the state to NUBIX_NOT_CONFIGURED
  
