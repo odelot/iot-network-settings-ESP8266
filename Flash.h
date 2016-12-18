@@ -1,8 +1,17 @@
 #ifndef __FLASH_H_
 #define __FLASH_H_
 
+#include <Arduino.h>
+#include <Stream.h>
 #include <EEPROM.h>
-#include "Log.h"
+
+//#define DEBUG_FLASH(...) os_printf( __VA_ARGS__ )
+
+#ifndef DEBUG_FLASH
+#define DEBUG_FLASH(...)
+#define NODEBUG_FLASH
+#endif
+
 
 class Flash {
   

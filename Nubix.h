@@ -2,37 +2,44 @@
 #define __NUBIX_H_
 
 #include "Flash.h"
+#include <WiFiManager.h>
 
 #define DEFAULT_FLASH_OFFSET 0
-#define DEFAULT_SERVER_PORT 9402
 #define DEFAULT_CONNECTION_TIMEOUT 30000 //30 seconds
+
+#define DEBUG_NUBIX_WM(...) os_printf( __VA_ARGS__ )
+
+#ifndef DEBUG_NUBIX_WM
+#define DEBUG_NUBIX_WM(...)
+#define NODEBUG_NUBIX_WM
+#endif
+
 
 class Nubix {
 
 public:
-  Nubix () : flash (DEFAULT_FLASH_OFFSET), server (DEFAULT_SERVER_PORT), connTimeout (DEFAULT_CONNECTION_TIMEOUT) {};
-  Nubix (int eeprom_offset, int server_port) : flash(eeprom_offset), server (server_port), connTimeout (DEFAULT_CONNECTION_TIMEOUT) {};
+  Nubix (WiFiManager *wifiManager) : flash (DEFAULT_FLASH_OFFSET), connTimeout (DEFAULT_CONNECTION_TIMEOUT), _wifiManager(wifiManager) {};
+  Nubix (WiFiManager *wifiManager, int eeprom_offset) : flash(eeprom_offset), connTimeout (DEFAULT_CONNECTION_TIMEOUT), _wifiManager(wifiManager) {};
 
-  const static byte NUBIX_NOT_CONFIGURED = 0;
-  const static byte NUBIX_CONNECTING = 1;
-  const static byte NUBIX_VALID = 2;
-  const static byte NUBIX_CONNECTED = 3;
+  const static byte NUBIX_NOT_CONFIGURED = 1;
+  const static byte NUBIX_CONNECTING = 2;
+  const static byte NUBIX_VALID = 3;
+  const static byte NUBIX_CONNECTED = 4;
  
   void setup ();
   void loop ();
+  void reset ();
   byte getState ();
   void setConnectionTimeout (long connectionTimeout);
+  
+  void  setOnStateChange( void (*func)(byte,byte) );
+  void  setGenerateSSID ( String (*func)() );
     
 
-protected:
-  virtual void myLoop ();
-  virtual void mySetup ();
-  virtual void status (byte nubix_state);
-  virtual void changeState (byte _old, byte _new);
+protected:  
+  void changeState (byte _old, byte _new);
   void setState (byte state);
-  String getServerSSID ();
-  void initConfigState ();
-  bool receiveConfigInfo ();
+  String getServerSSID ();    
   void initConnectionState ();
   bool waitConnection (long timeout);
   
@@ -40,8 +47,10 @@ protected:
   byte state;
   long connTimeout;
 
-  WiFiClient client[2];
-  WiFiServer server;
+  void (*_onStateChange)(byte,byte) = NULL;
+  String (*_generateSSID)() = NULL;  
+ 
+  WiFiManager *_wifiManager;
 
 };
 

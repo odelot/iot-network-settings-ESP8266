@@ -1,31 +1,36 @@
 //simplest-sample
-//
-//this way, you don't need to implement a class extending the 
-//Nubix class. It is very simple, but using the lib this way
-//you cannot control the state changes (to give user some 
-//sort of feedback)
 
 #include <Flash.h>
 #include <Log.h>
 #include <Nubix.h>
 #include <EEPROM.h>
 #include <ESP8266WiFi.h>
+#include <WiFiManager.h>
+#include <DNSServer.h>            
+#include <ESP8266WebServer.h>    
 
-Nubix nubix;
+WiFiManager wifiManager;
+Nubix nubix (&wifiManager);
 
-//You can change the eeprom offset and the server port
+//You can change the eeprom offset 
 //int eeprom_offset = 0;
-//int server_port = 9402;
-//Nubix nubix(eeprom_offset,server_port);
+//Nubix nubix(eeprom_offset);
+
+//use it to reset the network credentials
+void reset () {
+  nubix.reset ();
+}
 
 void setup() {
-  Serial.begin (9600);
+  Serial.begin (115200);
+  //Serial.setDebugOutput(1);
+  wifiManager.setDebugOutput (false);
   nubix.setup ();
 }
 
 void loop() {
   nubix.loop ();
   if (nubix.getState() == Nubix::NUBIX_CONNECTED) {
-    Serial.println ("do your stuff");
+     //do your stuff here
   }
 }
